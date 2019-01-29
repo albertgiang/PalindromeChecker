@@ -16,6 +16,9 @@ public void setup()
 }
 public boolean palindrome(String word)
 {
+  //remove punctuation before sending it to reverse
+  String palindromed = reverse(word);
+  word = word.toLowerCase();
   if(reverse(word).equals(word)){
     return true;
   } else {
@@ -29,8 +32,12 @@ public String reverse(String str)
     
     for(int i = str.length() - 1; i >= 0; i--){
       element = str.substring(i, i + 1);
+      element = element.toLowerCase();
       
-      sNew += element;
+      if(Character.isLetter(str.charAt(i)) == true){
+        sNew += element;
+      }
     }
+    println(sNew);
     return sNew;
 }
